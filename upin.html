@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing</title>
+    <style>
+        * {
+            background-color: rgb(61, 122, 163);
+            
+        }
+
+        a {
+            font-size: 16px;
+            border-radius: 2px;
+            background-color: rgb(2, 6, 21);
+            color: azure;
+            padding: 5px;
+            text-decoration: none;
+
+            font-style: inherit;
+        }
+
+        input {
+            background-color: azure;
+        }
+
+
+        a:hover {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .body {
+            margin: auto;
+            width: 50%;
+            margin-top: 80px;
+        }
+
+        .centre {
+            margin: auto;
+            width: 50%;
+        }
+
+        .input {
+            width: 30px;
+            margin-right: 6px;
+            height: 33px;
+            text-align: center;
+            border: none;
+            border-bottom: 2px solid rgb(2, 6, 21);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+        <img src="images/logo.jpg" alt="loading">
+        <div class="centre">
+            <h2>Enter your UPIN</h2>
+            <div id="inputs">
+                <input type="password" class="input" inputmode="numeric" maxlength="1">
+                <input type="password" class="input" inputmode="numeric" maxlength="1">
+                <input type="password" class="input" inputmode="numeric" maxlength="1">
+                <input type="password" class="input" inputmode="numeric" maxlength="1">
+            </div><br><br>
+            <a href="http://127.0.0.1:5500/personalinfo.html">CANCEL</a> &nbsp;&nbsp;
+            <a href="http://127.0.0.1:5500/paysuccess.html">CONFIRM</a>
+        </div>
+    </div>
+
+    <script> const inputs = document.getElementById("inputs");
+
+        inputs.addEventListener("keyup", function (e) {
+            const target = e.target;
+            const key = e.key.toLowerCase();
+
+            if (key == "backspace" || key == "delete") {
+                target.value = "";
+            }
+            if (key == "backspace" || key == "delete" && target.value == "") {
+                const prev = target.previousElementSibling;
+                if (prev) {
+                    prev.focus();
+                }
+            }
+            return;
+        });
+        inputs.addEventListener("input", function (e) {
+            const target = e.target;
+            const val = target.value;
+
+            if (isNaN(val)) {
+                target.value = "";
+                return;
+            }
+
+            if (val != "") {
+                const next = target.nextElementSibling;
+                if (next) {
+                    next.focus();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
